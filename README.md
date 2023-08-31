@@ -3,13 +3,14 @@
 2. Открыть проект в IntelliJ IDEA
 3. В терминале в корне проекта запустить контейнеры:
    * docker-compose -p reportportal up -d --force-recreate
-4. Запустить приложение: 
+4. В файле docker-compose1.yml надать на двойную стрелочку для запуска
+5. Запустить приложение: 
    * java -jar .\artifacts\aqa-shop\aqa-shop.jar --spring.datasource.url=jdbc:mysql://localhost:3306/app
-5. Запустить тесты:
+6. Запустить тесты:
    * .\gradlew clean test -DdbUrl=jdbc:mysql://localhost:3306/app
-6. Запустить отчёт Allure:
+7. Запустить отчёт Allure:
    * .\gradlew allureServe и открыть в браузере:
-7. В браузере для запуска ReportPortal ввести адрес: 
+8. В браузере для запуска ReportPortal ввести адрес: 
    * http://localhost:8181/ui/#login
    * Логин superadmin
    * Пароль erebus
