@@ -3,7 +3,9 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
-
+data
+.idea
+java_pid15840.hprof
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml
