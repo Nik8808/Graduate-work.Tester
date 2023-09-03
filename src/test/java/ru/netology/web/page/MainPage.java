@@ -6,14 +6,14 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class MainPage {
     private static SelenideElement buyButton = $(".button__content");
-    private static SelenideElement breditButton = $(".button_view_extra");
+    private static SelenideElement creditButton = $(".button_view_extra");
 
-    public static FormPage clickBuyButton() {
+    public FormPage clickBuyButton() {
         buyButton.click();
         return new FormPage();
     }
-    public static FormPage clickCreditButton() {
-        breditButton.click();
+    public FormPage clickCreditButton() {
+        creditButton.click();
         return new FormPage();
     }
 }

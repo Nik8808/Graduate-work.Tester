@@ -8,7 +8,6 @@ import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.disappear;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class FormPage {
@@ -42,16 +41,7 @@ public class FormPage {
         statusError.should(disappear);
     }
 
-    public void invalidFormat() {
-        paddingError.shouldHave(Condition.text("Неверный формат "), Duration.ofSeconds(10)).shouldBe(Condition.visible);
-    }
-    public void invalidCardExpirationDate() {
-        paddingError.shouldHave(Condition.text("Неверно указан срок действия карты "), Duration.ofSeconds(10)).shouldBe(Condition.visible);
-    }
-    public void cardExpired() {
-        paddingError.shouldHave(Condition.text("Истёк срок действия карты "), Duration.ofSeconds(10)).shouldBe(Condition.visible);
-    }
-    public void requiredToFill() {
-        paddingError.shouldHave(Condition.text("Поле обязательно для заполнения "), Duration.ofSeconds(10)).shouldBe(Condition.visible);
+    public void invalidFormat(String status) {
+        paddingError.shouldBe(visible, Duration.ofSeconds(10));
     }
 }
