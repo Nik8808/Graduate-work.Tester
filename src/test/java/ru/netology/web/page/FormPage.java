@@ -7,7 +7,7 @@ import ru.netology.web.data.DataHelper;
 import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.disappear;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 
 public class FormPage {
@@ -19,7 +19,11 @@ public class FormPage {
     private static SelenideElement continueButton = $("form button");
     private static SelenideElement statusSuccess = $(".notification_status_ok");
     private SelenideElement statusError = $(".notification_status_error");
-    private SelenideElement paddingError = $(".input__sub");
+    //private SelenideElement paddingErrorEnd = $(".input__sub");
+
+    private SelenideElement paddingError(SelenideElement element) {
+        return element.closest(".input__inner").find(".input__sub");
+    }
 
 
     public void setValues(DataHelper.CardInfo info) {
@@ -29,19 +33,56 @@ public class FormPage {
         nameField.setValue(info.getName());
         cvcField.setValue(info.getCvc());
         continueButton.click();
+
     }
 
     public void checkErrorNotification() {
-        statusError.shouldBe(visible, Duration.ofSeconds(20));
-        statusSuccess.should(disappear);
+        statusError.shouldHave(text("Ошибка! Банк отказал в проведении операции. "), Duration.ofSeconds(10)).shouldBe(Condition.visible);
+        statusSuccess.shouldBe(disappear);
     }
 
     public void checkSuccessNotification() {
-        statusSuccess.shouldBe(visible, Duration.ofSeconds(20));
-        statusError.should(disappear);
+        statusSuccess.shouldHave(text("Операция одобрена Банком."), Duration.ofSeconds(10)).shouldBe(Condition.visible);
+        statusError.shouldBe(disappear);
     }
 
-    public void invalidFormat(String status) {
-        paddingError.shouldBe(visible, Duration.ofSeconds(10));
+    public void invalidFormatNumber(String status) {
+        paddingError(numberField).shouldHave(text(status), Duration.ofSeconds(10)).shouldBe(Condition.visible);
+        paddingError(monthField).should(disappear);
+        paddingError(yearField).should(disappear);
+        paddingError(nameField).should(disappear);
+        paddingError(cvcField).should(disappear);
+    }
+
+    public void invalidFormatMonth(String status) {
+        paddingError(monthField).shouldHave(text(status), Duration.ofSeconds(10)).shouldBe(Condition.visible);
+        paddingError(numberField).should(disappear);
+        paddingError(yearField).should(disappear);
+        paddingError(nameField).should(disappear);
+        paddingError(cvcField).should(disappear);
+    }
+
+    public void invalidFormatYear(String status) {
+        paddingError(yearField).shouldHave(text(status), Duration.ofSeconds(10)).shouldBe(Condition.visible);
+        paddingError(monthField).should(disappear);
+        paddingError(numberField).should(disappear);
+        paddingError(nameField).should(disappear);
+        paddingError(cvcField).should(disappear);
+    }
+
+    public void invalidFormatName(String status) {
+        paddingError(nameField).shouldHave(text(status), Duration.ofSeconds(10)).shouldBe(Condition.visible);
+        paddingError(monthField).should(disappear);
+        paddingError(yearField).should(disappear);
+        paddingError(numberField).should(disappear);
+        paddingError(cvcField).should(disappear);
+    }
+
+    public void invalidFormatCvc(String status) {
+        paddingError(cvcField).shouldHave(text(status), Duration.ofSeconds(10)).shouldBe(Condition.visible);
+        paddingError(monthField).should(disappear);
+        paddingError(yearField).should(disappear);
+        paddingError(nameField).should(disappear);
+        paddingError(numberField).should(disappear);
     }
 }

@@ -12,6 +12,7 @@ public class MainPage {
         buyButton.click();
         return new FormPage();
     }
+
     public FormPage clickCreditButton() {
         creditButton.click();
         return new FormPage();

@@ -72,7 +72,7 @@ public class CreditTest {
         var formPage = mainPage.clickCreditButton();
         var cardInfo = DataHelper.getNotValidDeclinedCardLessThanSixteen();
         formPage.setValues(cardInfo);
-        formPage.invalidFormat("Неверный формат ");
+        formPage.invalidFormatNumber("Неверный формат ");
     }
 
     @Test
@@ -81,7 +81,7 @@ public class CreditTest {
         var formPage = mainPage.clickCreditButton();
         var cardInfo = DataHelper.getNotValidDeclinedCardLetters();
         formPage.setValues(cardInfo);
-        formPage.invalidFormat("Неверный формат ");
+        formPage.invalidFormatNumber("Неверный формат ");
     }
 
     @Test
@@ -90,7 +90,7 @@ public class CreditTest {
         var formPage = mainPage.clickCreditButton();
         var cardInfo = DataHelper.getNotValidDeclinedCardSpecialCharacters();
         formPage.setValues(cardInfo);
-        formPage.invalidFormat("Неверный формат ");
+        formPage.invalidFormatNumber("Неверный формат ");
     }
 
     @Test
@@ -99,7 +99,7 @@ public class CreditTest {
         var formPage = mainPage.clickCreditButton();
         var cardInfo = DataHelper.getNotValidDeclinedMonthDigit();
         formPage.setValues(cardInfo);
-        formPage.invalidFormat("Неверный формат ");
+        formPage.invalidFormatMonth("Неверный формат ");
     }
 
     @Test
@@ -108,7 +108,7 @@ public class CreditTest {
         var formPage = mainPage.clickCreditButton();
         var cardInfo = DataHelper.getNotValidDeclinedMonthZero();
         formPage.setValues(cardInfo);
-        formPage.invalidFormat("Неверный формат ");
+        formPage.invalidFormatMonth("Неверный формат ");
     }
 
     @Test
@@ -117,7 +117,7 @@ public class CreditTest {
         var formPage = mainPage.clickCreditButton();
         var cardInfo = DataHelper.getNotValidDeclinedMonthWrongDate();
         formPage.setValues(cardInfo);
-        formPage.invalidFormat("Неверно указан срок действия карты ");
+        formPage.invalidFormatMonth("Неверно указан срок действия карты ");
     }
 
     @Test
@@ -126,7 +126,7 @@ public class CreditTest {
         var formPage = mainPage.clickCreditButton();
         var cardInfo = DataHelper.getNotValidDeclinedMonthOverdueDate();
         formPage.setValues(cardInfo);
-        formPage.invalidFormat("Неверно указан срок действия карты ");
+        formPage.invalidFormatMonth("Неверно указан срок действия карты ");
     }
 
     @Test
@@ -135,7 +135,7 @@ public class CreditTest {
         var formPage = mainPage.clickCreditButton();
         var cardInfo = DataHelper.getNotValidDeclinedMonthLetters();
         formPage.setValues(cardInfo);
-        formPage.invalidFormat("Неверный формат ");
+        formPage.invalidFormatMonth("Неверный формат ");
     }
 
     @Test
@@ -144,7 +144,7 @@ public class CreditTest {
         var formPage = mainPage.clickCreditButton();
         var cardInfo = DataHelper.getNotValidDeclinedMonthSpecialCharacters();
         formPage.setValues(cardInfo);
-        formPage.invalidFormat("Неверный формат ");
+        formPage.invalidFormatMonth("Неверный формат ");
     }
 
     @Test
@@ -153,7 +153,7 @@ public class CreditTest {
         var formPage = mainPage.clickCreditButton();
         var cardInfo = DataHelper.getNotValidDeclinedYearDigit();
         formPage.setValues(cardInfo);
-        formPage.invalidFormat("Неверный формат ");
+        formPage.invalidFormatYear("Неверный формат ");
     }
 
     @Test
@@ -162,7 +162,7 @@ public class CreditTest {
         var formPage = mainPage.clickCreditButton();
         var cardInfo = DataHelper.getNotValidDeclinedYearZero();
         formPage.setValues(cardInfo);
-        formPage.invalidFormat("Истёк срок действия карты ");
+        formPage.invalidFormatYear("Истёк срок действия карты ");
     }
 
     @Test
@@ -171,7 +171,7 @@ public class CreditTest {
         var formPage = mainPage.clickCreditButton();
         var cardInfo = DataHelper.getNotValidDeclinedYearPrevious();
         formPage.setValues(cardInfo);
-        formPage.invalidFormat("Истёк срок действия карты ");
+        formPage.invalidFormatYear("Истёк срок действия карты ");
     }
 
     @Test
@@ -180,7 +180,7 @@ public class CreditTest {
         var formPage = mainPage.clickCreditButton();
         var cardInfo = DataHelper.getNotValidDeclinedYearNonExistentTerm();
         formPage.setValues(cardInfo);
-        formPage.invalidFormat("Неверно указан срок действия карты ");
+        formPage.invalidFormatYear("Неверно указан срок действия карты ");
     }
 
     @Test
@@ -189,7 +189,7 @@ public class CreditTest {
         var formPage = mainPage.clickCreditButton();
         var cardInfo = DataHelper.getNotValidDeclinedYearLetters();
         formPage.setValues(cardInfo);
-        formPage.invalidFormat("Неверный формат ");
+        formPage.invalidFormatYear("Неверный формат ");
     }
 
     @Test
@@ -198,7 +198,7 @@ public class CreditTest {
         var formPage = mainPage.clickCreditButton();
         var cardInfo = DataHelper.getNotValidDeclinedYearSpecialCharacters();
         formPage.setValues(cardInfo);
-        formPage.invalidFormat("Неверный формат ");
+        formPage.invalidFormatYear("Неверный формат ");
     }
 
     @Test
@@ -207,7 +207,7 @@ public class CreditTest {
         var formPage = mainPage.clickCreditButton();
         var cardInfo = DataHelper.getNotValidDeclinedNameNumbers();
         formPage.setValues(cardInfo);
-        formPage.invalidFormat("Неверный формат ");
+        formPage.invalidFormatName("Неверный формат ");
     }
 
     @Test
@@ -216,7 +216,7 @@ public class CreditTest {
         var formPage = mainPage.clickCreditButton();
         var cardInfo = DataHelper.getNotValidDeclinedNameCyrillic();
         formPage.setValues(cardInfo);
-        formPage.invalidFormat("Неверный формат ");
+        formPage.invalidFormatName("Неверный формат ");
     }
 
     @Test
@@ -225,7 +225,7 @@ public class CreditTest {
         var formPage = mainPage.clickCreditButton();
         var cardInfo = DataHelper.getNotValidDeclinedNameSpecialCharacters();
         formPage.setValues(cardInfo);
-        formPage.invalidFormat("Неверный формат ");
+        formPage.invalidFormatName("Неверный формат ");
     }
 
     @Test
@@ -234,7 +234,7 @@ public class CreditTest {
         var formPage = mainPage.clickCreditButton();
         var cardInfo = DataHelper.getNotValidDeclinedCVCLessThanThree();
         formPage.setValues(cardInfo);
-        formPage.invalidFormat("Неверный формат ");
+        formPage.invalidFormatCvc("Неверный формат ");
     }
 
     @Test
@@ -243,7 +243,7 @@ public class CreditTest {
         var formPage = mainPage.clickCreditButton();
         var cardInfo = DataHelper.getNotValidDeclinedCVCZero();
         formPage.setValues(cardInfo);
-        formPage.invalidFormat("Неверный формат ");
+        formPage.invalidFormatCvc("Неверный формат ");
     }
 
     @Test
@@ -252,7 +252,7 @@ public class CreditTest {
         var formPage = mainPage.clickCreditButton();
         var cardInfo = DataHelper.getNotValidDeclinedCVCLetters();
         formPage.setValues(cardInfo);
-        formPage.invalidFormat("Неверный формат ");
+        formPage.invalidFormatCvc("Неверный формат ");
     }
 
     @Test
@@ -261,7 +261,7 @@ public class CreditTest {
         var formPage = mainPage.clickCreditButton();
         var cardInfo = DataHelper.getNotValidDeclinedCVCSpecialCharacters();
         formPage.setValues(cardInfo);
-        formPage.invalidFormat("Неверный формат ");
+        formPage.invalidFormatCvc("Неверный формат ");
     }
 
     @Test
@@ -270,7 +270,7 @@ public class CreditTest {
         var formPage = mainPage.clickCreditButton();
         var cardInfo = DataHelper.getNotValidDeclinedCardDoNotFillOut();
         formPage.setValues(cardInfo);
-        formPage.invalidFormat("Поле обязательно для заполнения ");
+        formPage.invalidFormatNumber("Поле обязательно для заполнения ");
     }
 
     @Test
@@ -279,7 +279,7 @@ public class CreditTest {
         var formPage = mainPage.clickCreditButton();
         var cardInfo = DataHelper.getNotValidDeclinedMonthDoNotFillOut();
         formPage.setValues(cardInfo);
-        formPage.invalidFormat("Поле обязательно для заполнения ");
+        formPage.invalidFormatMonth("Поле обязательно для заполнения ");
     }
 
     @Test
@@ -288,7 +288,7 @@ public class CreditTest {
         var formPage = mainPage.clickCreditButton();
         var cardInfo = DataHelper.getNotValidDeclinedYearDoNotFillOut();
         formPage.setValues(cardInfo);
-        formPage.invalidFormat("Поле обязательно для заполнения ");
+        formPage.invalidFormatYear("Поле обязательно для заполнения ");
     }
 
     @Test
@@ -297,7 +297,7 @@ public class CreditTest {
         var formPage = mainPage.clickCreditButton();
         var cardInfo = DataHelper.getNotValidDeclinedNameDoNotFillOut();
         formPage.setValues(cardInfo);
-        formPage.invalidFormat("Поле обязательно для заполнения ");
+        formPage.invalidFormatName("Поле обязательно для заполнения ");
     }
 
     @Test
@@ -306,6 +306,6 @@ public class CreditTest {
         var formPage = mainPage.clickCreditButton();
         var cardInfo = DataHelper.getNotValidDeclinedCVCDoNotFillOut();
         formPage.setValues(cardInfo);
-        formPage.invalidFormat("Поле обязательно для заполнения ");
+        formPage.invalidFormatCvc("Поле обязательно для заполнения ");
     }
 }
