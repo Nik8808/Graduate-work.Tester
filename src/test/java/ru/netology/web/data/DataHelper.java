@@ -33,8 +33,7 @@ public class DataHelper {
         return String.valueOf(faker.number().numberBetween(1, 999999999999L));
     }
 
-    private static String generateValidDate(String pattern) {
-        int addMonths = new Random().nextInt(60);
+    private static String generateDate(int addMonths, String pattern) {
         return LocalDate.now().plusMonths(addMonths).format(DateTimeFormatter.ofPattern(pattern));
     }
 
@@ -105,27 +104,39 @@ public class DataHelper {
 
 
     public static CardInfo getValidApprovedCard() {
-        return new CardInfo(getApprovedCard(), generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), generateRandomCVC());
+        int numberMonths = new Random().nextInt(60);
+        return new CardInfo(getApprovedCard(), generateDate(numberMonths, "MM"),
+                generateDate(numberMonths, "yy"), generateRandomName(), generateRandomCVC());
     }
 
     public static CardInfo getValidDeclinedCard() {
-        return new CardInfo(getDeclinedCard(), generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), generateRandomCVC());
+        int numberMonths = new Random().nextInt(60);
+        return new CardInfo(getDeclinedCard(), generateDate(numberMonths, "MM"),
+                generateDate(numberMonths, "yy"), generateRandomName(), generateRandomCVC());
     }
 
     public static CardInfo getNotValidDeclinedCard() {
-        return new CardInfo(generateRandomCard(), generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), generateRandomCVC());
+        int numberMonths = new Random().nextInt(60);
+        return new CardInfo(generateRandomCard(), generateDate(numberMonths, "MM"),
+                generateDate(numberMonths, "yy"), generateRandomName(), generateRandomCVC());
     }
 
     public static CardInfo getNotValidDeclinedCardLessThanSixteen() {
-        return new CardInfo(generateRandomCardLessThanSixteen(), generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), generateRandomCVC());
+        int numberMonths = new Random().nextInt(60);
+        return new CardInfo(generateRandomCardLessThanSixteen(), generateDate(numberMonths, "MM"),
+                generateDate(numberMonths, "yy"), generateRandomName(), generateRandomCVC());
     }
 
     public static CardInfo getNotValidDeclinedCardLetters() {
-        return new CardInfo("абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), generateRandomCVC());
+        int numberMonths = new Random().nextInt(60);
+        return new CardInfo("абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", generateDate(numberMonths, "MM"),
+                generateDate(numberMonths, "yy"), generateRandomName(), generateRandomCVC());
     }
 
     public static CardInfo getNotValidDeclinedCardSpecialCharacters() {
-        return new CardInfo("!@#$%^&*()_+!№;%:?*()", generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), generateRandomCVC());
+        int numberMonths = new Random().nextInt(60);
+        return new CardInfo("!@#$%^&*()_+!№;%:?*()", generateDate(numberMonths, "MM"),
+                generateDate(numberMonths, "yy"), generateRandomName(), generateRandomCVC());
     }
 
     public static CardInfo getNotValidDeclinedMonthDigit() {
@@ -177,35 +188,51 @@ public class DataHelper {
     }
 
     public static CardInfo getNotValidDeclinedNameNumbers() {
-        return new CardInfo(getApprovedCard(), generateValidDate("MM"), generateValidDate("yy"), "0123456789", generateRandomCVC());
+        int numberMonths = new Random().nextInt(60);
+        return new CardInfo(getApprovedCard(), generateDate(numberMonths, "MM"),
+                generateDate(numberMonths, "yy"), "0123456789", generateRandomCVC());
     }
 
     public static CardInfo getNotValidDeclinedNameCyrillic() {
-        return new CardInfo(getApprovedCard(), generateValidDate("MM"), generateValidDate("yy"), generateRandomNameCyrillic(), generateRandomCVC());
+        int numberMonths = new Random().nextInt(60);
+        return new CardInfo(getApprovedCard(), generateDate(numberMonths, "MM"),
+                generateDate(numberMonths, "yy"), generateRandomNameCyrillic(), generateRandomCVC());
     }
 
     public static CardInfo getNotValidDeclinedNameSpecialCharacters() {
-        return new CardInfo(getApprovedCard(), generateValidDate("MM"), generateValidDate("yy"), "!@#$%^&*()_+!№;%:?*()", generateRandomCVC());
+        int numberMonths = new Random().nextInt(60);
+        return new CardInfo(getApprovedCard(), generateDate(numberMonths, "MM"),
+                generateDate(numberMonths, "yy"), "!@#$%^&*()_+!№;%:?*()", generateRandomCVC());
     }
 
     public static CardInfo getNotValidDeclinedCVCLessThanThree() {
-        return new CardInfo(getApprovedCard(), generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), generateRandomCVCLessThanThree());
+        int numberMonths = new Random().nextInt(60);
+        return new CardInfo(getApprovedCard(), generateDate(numberMonths, "MM"),
+                generateDate(numberMonths, "yy"), generateRandomName(), generateRandomCVCLessThanThree());
     }
 
     public static CardInfo getNotValidDeclinedCVCZero() {
-        return new CardInfo(getApprovedCard(), generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), "000");
+        int numberMonths = new Random().nextInt(60);
+        return new CardInfo(getApprovedCard(), generateDate(numberMonths, "MM"),
+                generateDate(numberMonths, "yy"), generateRandomName(), "000");
     }
 
     public static CardInfo getNotValidDeclinedCVCLetters() {
-        return new CardInfo(getApprovedCard(), generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+        int numberMonths = new Random().nextInt(60);
+        return new CardInfo(getApprovedCard(), generateDate(numberMonths, "MM"),
+                generateDate(numberMonths, "yy"), generateRandomName(), "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
     }
 
     public static CardInfo getNotValidDeclinedCVCSpecialCharacters() {
-        return new CardInfo(getApprovedCard(), generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), "!@#$%^&*()_+!№;%:?*()");
+        int numberMonths = new Random().nextInt(60);
+        return new CardInfo(getApprovedCard(), generateDate(numberMonths, "MM"),
+                generateDate(numberMonths, "yy"), generateRandomName(), "!@#$%^&*()_+!№;%:?*()");
     }
 
     public static CardInfo getNotValidDeclinedCardDoNotFillOut() {
-        return new CardInfo("", generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), generateRandomCVC());
+        int numberMonths = new Random().nextInt(60);
+        return new CardInfo("", generateDate(numberMonths, "MM"),
+                generateDate(numberMonths, "yy"), generateRandomName(), generateRandomCVC());
     }
 
     public static CardInfo getNotValidDeclinedMonthDoNotFillOut() {
@@ -217,11 +244,15 @@ public class DataHelper {
     }
 
     public static CardInfo getNotValidDeclinedNameDoNotFillOut() {
-        return new CardInfo(getApprovedCard(), generateValidDate("MM"), generateValidDate("yy"), "", generateRandomCVC());
+        int numberMonths = new Random().nextInt(60);
+        return new CardInfo(getApprovedCard(), generateDate(numberMonths, "MM"),
+                generateDate(numberMonths, "yy"), "", generateRandomCVC());
     }
 
     public static CardInfo getNotValidDeclinedCVCDoNotFillOut() {
-        return new CardInfo(getApprovedCard(), generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), "");
+        int numberMonths = new Random().nextInt(60);
+        return new CardInfo(getApprovedCard(), generateDate(numberMonths, "MM"),
+                generateDate(numberMonths, "yy"), generateRandomName(), "");
     }
 
     @Value
