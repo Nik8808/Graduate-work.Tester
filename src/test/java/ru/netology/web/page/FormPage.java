@@ -47,7 +47,7 @@ public class FormPage {
     }
 
     public void invalidFormatNumber(String status) {
-        paddingError(numberField).shouldHave(text(status), Duration.ofSeconds(10)).shouldBe(Condition.visible);
+        paddingError(numberField).shouldHave(text(status)).shouldBe(Condition.visible);
         paddingError(monthField).should(disappear);
         paddingError(yearField).should(disappear);
         paddingError(nameField).should(disappear);
@@ -55,7 +55,7 @@ public class FormPage {
     }
 
     public void invalidFormatMonth(String status) {
-        paddingError(monthField).shouldHave(text(status), Duration.ofSeconds(10)).shouldBe(Condition.visible);
+        paddingError(monthField).shouldHave(text(status)).shouldBe(Condition.visible);
         paddingError(numberField).should(disappear);
         paddingError(yearField).should(disappear);
         paddingError(nameField).should(disappear);
@@ -63,7 +63,7 @@ public class FormPage {
     }
 
     public void invalidFormatYear(String status) {
-        paddingError(yearField).shouldHave(text(status), Duration.ofSeconds(10)).shouldBe(Condition.visible);
+        paddingError(yearField).shouldHave(text(status)).shouldBe(Condition.visible);
         paddingError(monthField).should(disappear);
         paddingError(numberField).should(disappear);
         paddingError(nameField).should(disappear);
@@ -71,7 +71,7 @@ public class FormPage {
     }
 
     public void invalidFormatName(String status) {
-        paddingError(nameField).shouldHave(text(status), Duration.ofSeconds(10)).shouldBe(Condition.visible);
+        paddingError(nameField).shouldHave(text(status)).shouldBe(Condition.visible);
         paddingError(monthField).should(disappear);
         paddingError(yearField).should(disappear);
         paddingError(numberField).should(disappear);
@@ -79,7 +79,7 @@ public class FormPage {
     }
 
     public void invalidFormatCvc(String status) {
-        paddingError(cvcField).shouldHave(text(status), Duration.ofSeconds(10)).shouldBe(Condition.visible);
+        paddingError(cvcField).shouldHave(text(status)).shouldBe(Condition.visible);
         paddingError(monthField).should(disappear);
         paddingError(yearField).should(disappear);
         paddingError(nameField).should(disappear);

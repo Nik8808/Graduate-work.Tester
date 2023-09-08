@@ -7,6 +7,7 @@ import lombok.Value;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import java.util.Random;
 
 
 public class DataHelper {
@@ -31,7 +32,10 @@ public class DataHelper {
     public static String generateRandomCardLessThanSixteen() {
         return String.valueOf(faker.number().numberBetween(1, 999999999999L));
     }
-
+    private static String generateValidDate(String pattern) {
+        int addMonths = new Random().nextInt(60);
+        return LocalDate.now().plusMonths(addMonths).format(DateTimeFormatter.ofPattern(pattern));
+    }
     public static String generateValidYear() {
         int shift = faker.number().numberBetween(0, 5);
         return LocalDate.now().plusYears(shift).format(DateTimeFormatter.ofPattern("yy"));
@@ -99,93 +103,27 @@ public class DataHelper {
 
 
     public static CardInfo getValidApprovedCard() {
-        int yearsShift = faker.number().numberBetween(0, 5);
-        int thisMonth = Integer.parseInt(LocalDate.now().format(DateTimeFormatter.ofPattern("MM")));
-        int max = 12 - thisMonth;
-        int monthShift;
-        if (yearsShift == 0) {
-            monthShift = faker.number().numberBetween(0, max);
-        } else {
-            monthShift = faker.number().numberBetween(0, 11);
-        }
-        String years = LocalDate.now().plusYears(yearsShift).format(DateTimeFormatter.ofPattern("yy"));
-        String month = LocalDate.now().plusMonths(monthShift).format(DateTimeFormatter.ofPattern("MM"));
-        return new CardInfo(getApprovedCard(), month, years, generateRandomName(), generateRandomCVC());
+        return new CardInfo(getApprovedCard(), generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), generateRandomCVC());
     }
 
     public static CardInfo getValidDeclinedCard() {
-        int yearsShift = faker.number().numberBetween(0, 5);
-        int thisMonth = Integer.parseInt(LocalDate.now().format(DateTimeFormatter.ofPattern("MM")));
-        int max = 12 - thisMonth;
-        int monthShift;
-        if (yearsShift == 0) {
-            monthShift = faker.number().numberBetween(0, max);
-        } else {
-            monthShift = faker.number().numberBetween(0, 11);
-        }
-        String years = LocalDate.now().plusYears(yearsShift).format(DateTimeFormatter.ofPattern("yy"));
-        String month = LocalDate.now().plusMonths(monthShift).format(DateTimeFormatter.ofPattern("MM"));
-        return new CardInfo(getDeclinedCard(), month, years, generateRandomName(), generateRandomCVC());
+        return new CardInfo(getDeclinedCard(), generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), generateRandomCVC());
     }
 
     public static CardInfo getNotValidDeclinedCard() {
-        int yearsShift = faker.number().numberBetween(0, 5);
-        int thisMonth = Integer.parseInt(LocalDate.now().format(DateTimeFormatter.ofPattern("MM")));
-        int max = 12 - thisMonth;
-        int monthShift;
-        if (yearsShift == 0) {
-            monthShift = faker.number().numberBetween(0, max);
-        } else {
-            monthShift = faker.number().numberBetween(0, 11);
-        }
-        String years = LocalDate.now().plusYears(yearsShift).format(DateTimeFormatter.ofPattern("yy"));
-        String month = LocalDate.now().plusMonths(monthShift).format(DateTimeFormatter.ofPattern("MM"));
-        return new CardInfo(generateRandomCard(), month, years, generateRandomName(), generateRandomCVC());
+                return new CardInfo(generateRandomCard(), generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), generateRandomCVC());
     }
 
     public static CardInfo getNotValidDeclinedCardLessThanSixteen() {
-        int yearsShift = faker.number().numberBetween(0, 5);
-        int thisMonth = Integer.parseInt(LocalDate.now().format(DateTimeFormatter.ofPattern("MM")));
-        int max = 12 - thisMonth;
-        int monthShift;
-        if (yearsShift == 0) {
-            monthShift = faker.number().numberBetween(0, max);
-        } else {
-            monthShift = faker.number().numberBetween(0, 11);
-        }
-        String years = LocalDate.now().plusYears(yearsShift).format(DateTimeFormatter.ofPattern("yy"));
-        String month = LocalDate.now().plusMonths(monthShift).format(DateTimeFormatter.ofPattern("MM"));
-        return new CardInfo(generateRandomCardLessThanSixteen(), month, years, generateRandomName(), generateRandomCVC());
+        return new CardInfo(generateRandomCardLessThanSixteen(), generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), generateRandomCVC());
     }
 
     public static CardInfo getNotValidDeclinedCardLetters() {
-        int yearsShift = faker.number().numberBetween(0, 5);
-        int thisMonth = Integer.parseInt(LocalDate.now().format(DateTimeFormatter.ofPattern("MM")));
-        int max = 12 - thisMonth;
-        int monthShift;
-        if (yearsShift == 0) {
-            monthShift = faker.number().numberBetween(0, max);
-        } else {
-            monthShift = faker.number().numberBetween(0, 11);
-        }
-        String years = LocalDate.now().plusYears(yearsShift).format(DateTimeFormatter.ofPattern("yy"));
-        String month = LocalDate.now().plusMonths(monthShift).format(DateTimeFormatter.ofPattern("MM"));
-        return new CardInfo("абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", month, years, generateRandomName(), generateRandomCVC());
+        return new CardInfo("абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), generateRandomCVC());
     }
 
     public static CardInfo getNotValidDeclinedCardSpecialCharacters() {
-        int yearsShift = faker.number().numberBetween(0, 5);
-        int thisMonth = Integer.parseInt(LocalDate.now().format(DateTimeFormatter.ofPattern("MM")));
-        int max = 12 - thisMonth;
-        int monthShift;
-        if (yearsShift == 0) {
-            monthShift = faker.number().numberBetween(0, max);
-        } else {
-            monthShift = faker.number().numberBetween(0, 11);
-        }
-        String years = LocalDate.now().plusYears(yearsShift).format(DateTimeFormatter.ofPattern("yy"));
-        String month = LocalDate.now().plusMonths(monthShift).format(DateTimeFormatter.ofPattern("MM"));
-        return new CardInfo("!@#$%^&*()_+!№;%:?*()", month, years, generateRandomName(), generateRandomCVC());
+                return new CardInfo("!@#$%^&*()_+!№;%:?*()", generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), generateRandomCVC());
     }
 
     public static CardInfo getNotValidDeclinedMonthDigit() {
@@ -237,123 +175,35 @@ public class DataHelper {
     }
 
     public static CardInfo getNotValidDeclinedNameNumbers() {
-        int yearsShift = faker.number().numberBetween(0, 5);
-        int thisMonth = Integer.parseInt(LocalDate.now().format(DateTimeFormatter.ofPattern("MM")));
-        int max = 12 - thisMonth;
-        int monthShift;
-        if (yearsShift == 0) {
-            monthShift = faker.number().numberBetween(0, max);
-        } else {
-            monthShift = faker.number().numberBetween(0, 11);
-        }
-        String years = LocalDate.now().plusYears(yearsShift).format(DateTimeFormatter.ofPattern("yy"));
-        String month = LocalDate.now().plusMonths(monthShift).format(DateTimeFormatter.ofPattern("MM"));
-        return new CardInfo(getApprovedCard(), month, years, "0123456789", generateRandomCVC());
+        return new CardInfo(getApprovedCard(), generateValidDate("MM"), generateValidDate("yy"), "0123456789", generateRandomCVC());
     }
 
     public static CardInfo getNotValidDeclinedNameCyrillic() {
-        int yearsShift = faker.number().numberBetween(0, 5);
-        int thisMonth = Integer.parseInt(LocalDate.now().format(DateTimeFormatter.ofPattern("MM")));
-        int max = 12 - thisMonth;
-        int monthShift;
-        if (yearsShift == 0) {
-            monthShift = faker.number().numberBetween(0, max);
-        } else {
-            monthShift = faker.number().numberBetween(0, 11);
-        }
-        String years = LocalDate.now().plusYears(yearsShift).format(DateTimeFormatter.ofPattern("yy"));
-        String month = LocalDate.now().plusMonths(monthShift).format(DateTimeFormatter.ofPattern("MM"));
-        return new CardInfo(getApprovedCard(), month, years, generateRandomNameCyrillic(), generateRandomCVC());
+               return new CardInfo(getApprovedCard(), generateValidDate("MM"), generateValidDate("yy"), generateRandomNameCyrillic(), generateRandomCVC());
     }
 
     public static CardInfo getNotValidDeclinedNameSpecialCharacters() {
-        int yearsShift = faker.number().numberBetween(0, 5);
-        int thisMonth = Integer.parseInt(LocalDate.now().format(DateTimeFormatter.ofPattern("MM")));
-        int max = 12 - thisMonth;
-        int monthShift;
-        if (yearsShift == 0) {
-            monthShift = faker.number().numberBetween(0, max);
-        } else {
-            monthShift = faker.number().numberBetween(0, 11);
-        }
-        String years = LocalDate.now().plusYears(yearsShift).format(DateTimeFormatter.ofPattern("yy"));
-        String month = LocalDate.now().plusMonths(monthShift).format(DateTimeFormatter.ofPattern("MM"));
-        return new CardInfo(getApprovedCard(), month, years, "!@#$%^&*()_+!№;%:?*()", generateRandomCVC());
+        return new CardInfo(getApprovedCard(), generateValidDate("MM"), generateValidDate("yy"), "!@#$%^&*()_+!№;%:?*()", generateRandomCVC());
     }
 
     public static CardInfo getNotValidDeclinedCVCLessThanThree() {
-        int yearsShift = faker.number().numberBetween(0, 5);
-        int thisMonth = Integer.parseInt(LocalDate.now().format(DateTimeFormatter.ofPattern("MM")));
-        int max = 12 - thisMonth;
-        int monthShift;
-        if (yearsShift == 0) {
-            monthShift = faker.number().numberBetween(0, max);
-        } else {
-            monthShift = faker.number().numberBetween(0, 11);
-        }
-        String years = LocalDate.now().plusYears(yearsShift).format(DateTimeFormatter.ofPattern("yy"));
-        String month = LocalDate.now().plusMonths(monthShift).format(DateTimeFormatter.ofPattern("MM"));
-        return new CardInfo(getApprovedCard(), month, years, generateRandomName(), generateRandomCVCLessThanThree());
+        return new CardInfo(getApprovedCard(), generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), generateRandomCVCLessThanThree());
     }
 
     public static CardInfo getNotValidDeclinedCVCZero() {
-        int yearsShift = faker.number().numberBetween(0, 5);
-        int thisMonth = Integer.parseInt(LocalDate.now().format(DateTimeFormatter.ofPattern("MM")));
-        int max = 12 - thisMonth;
-        int monthShift;
-        if (yearsShift == 0) {
-            monthShift = faker.number().numberBetween(0, max);
-        } else {
-            monthShift = faker.number().numberBetween(0, 11);
-        }
-        String years = LocalDate.now().plusYears(yearsShift).format(DateTimeFormatter.ofPattern("yy"));
-        String month = LocalDate.now().plusMonths(monthShift).format(DateTimeFormatter.ofPattern("MM"));
-        return new CardInfo(getApprovedCard(), month, years, generateRandomName(), "000");
+         return new CardInfo(getApprovedCard(), generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), "000");
     }
 
     public static CardInfo getNotValidDeclinedCVCLetters() {
-        int yearsShift = faker.number().numberBetween(0, 5);
-        int thisMonth = Integer.parseInt(LocalDate.now().format(DateTimeFormatter.ofPattern("MM")));
-        int max = 12 - thisMonth;
-        int monthShift;
-        if (yearsShift == 0) {
-            monthShift = faker.number().numberBetween(0, max);
-        } else {
-            monthShift = faker.number().numberBetween(0, 11);
-        }
-        String years = LocalDate.now().plusYears(yearsShift).format(DateTimeFormatter.ofPattern("yy"));
-        String month = LocalDate.now().plusMonths(monthShift).format(DateTimeFormatter.ofPattern("MM"));
-        return new CardInfo(getApprovedCard(), month, years, generateRandomName(), "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+        return new CardInfo(getApprovedCard(), generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
     }
 
     public static CardInfo getNotValidDeclinedCVCSpecialCharacters() {
-        int yearsShift = faker.number().numberBetween(0, 5);
-        int thisMonth = Integer.parseInt(LocalDate.now().format(DateTimeFormatter.ofPattern("MM")));
-        int max = 12 - thisMonth;
-        int monthShift;
-        if (yearsShift == 0) {
-            monthShift = faker.number().numberBetween(0, max);
-        } else {
-            monthShift = faker.number().numberBetween(0, 11);
-        }
-        String years = LocalDate.now().plusYears(yearsShift).format(DateTimeFormatter.ofPattern("yy"));
-        String month = LocalDate.now().plusMonths(monthShift).format(DateTimeFormatter.ofPattern("MM"));
-        return new CardInfo(getApprovedCard(), month, years, generateRandomName(), "!@#$%^&*()_+!№;%:?*()");
+        return new CardInfo(getApprovedCard(), generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), "!@#$%^&*()_+!№;%:?*()");
     }
 
     public static CardInfo getNotValidDeclinedCardDoNotFillOut() {
-        int yearsShift = faker.number().numberBetween(0, 5);
-        int thisMonth = Integer.parseInt(LocalDate.now().format(DateTimeFormatter.ofPattern("MM")));
-        int max = 12 - thisMonth;
-        int monthShift;
-        if (yearsShift == 0) {
-            monthShift = faker.number().numberBetween(0, max);
-        } else {
-            monthShift = faker.number().numberBetween(0, 11);
-        }
-        String years = LocalDate.now().plusYears(yearsShift).format(DateTimeFormatter.ofPattern("yy"));
-        String month = LocalDate.now().plusMonths(monthShift).format(DateTimeFormatter.ofPattern("MM"));
-        return new CardInfo("", month, years, generateRandomName(), generateRandomCVC());
+        return new CardInfo("", generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), generateRandomCVC());
     }
 
     public static CardInfo getNotValidDeclinedMonthDoNotFillOut() {
@@ -365,33 +215,11 @@ public class DataHelper {
     }
 
     public static CardInfo getNotValidDeclinedNameDoNotFillOut() {
-        int yearsShift = faker.number().numberBetween(0, 5);
-        int thisMonth = Integer.parseInt(LocalDate.now().format(DateTimeFormatter.ofPattern("MM")));
-        int max = 12 - thisMonth;
-        int monthShift;
-        if (yearsShift == 0) {
-            monthShift = faker.number().numberBetween(0, max);
-        } else {
-            monthShift = faker.number().numberBetween(0, 11);
-        }
-        String years = LocalDate.now().plusYears(yearsShift).format(DateTimeFormatter.ofPattern("yy"));
-        String month = LocalDate.now().plusMonths(monthShift).format(DateTimeFormatter.ofPattern("MM"));
-        return new CardInfo(getApprovedCard(), month, years, "", generateRandomCVC());
+        return new CardInfo(getApprovedCard(), generateValidDate("MM"), generateValidDate("yy"), "", generateRandomCVC());
     }
 
     public static CardInfo getNotValidDeclinedCVCDoNotFillOut() {
-        int yearsShift = faker.number().numberBetween(0, 5);
-        int thisMonth = Integer.parseInt(LocalDate.now().format(DateTimeFormatter.ofPattern("MM")));
-        int max = 12 - thisMonth;
-        int monthShift;
-        if (yearsShift == 0) {
-            monthShift = faker.number().numberBetween(0, max);
-        } else {
-            monthShift = faker.number().numberBetween(0, 11);
-        }
-        String years = LocalDate.now().plusYears(yearsShift).format(DateTimeFormatter.ofPattern("yy"));
-        String month = LocalDate.now().plusMonths(monthShift).format(DateTimeFormatter.ofPattern("MM"));
-        return new CardInfo(getApprovedCard(), month, years, generateRandomName(), "");
+        return new CardInfo(getApprovedCard(), generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), "");
     }
 
     @Value

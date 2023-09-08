@@ -39,10 +39,6 @@ public class SQLHelper {
         return runner.query(conn, codeSQL, new ScalarHandler<String>());
     }
 
-    public static void statusConfirmation(String status, String getStatus) {
-        assertEquals(status, getStatus);
-    }
-
     @SneakyThrows
     public static void cleanDatabase() {
         var connection = getConn();

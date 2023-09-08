@@ -19,8 +19,7 @@ allure {
 }
 
 repositories {
-    mavenLocal()
-    mavenCentral()
+     mavenCentral()
 }
 
 dependencies {

@@ -2,10 +2,7 @@ package ru.netology.web.test;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import ru.netology.web.data.DataHelper;
 import ru.netology.web.data.SQLHelper;
 import ru.netology.web.page.MainPage;
@@ -42,7 +39,7 @@ public class PurchaseTest {
         formPage.setValues(cardInfo);
         formPage.checkSuccessNotification();
         var info = SQLHelper.purchaseStatusCard();
-        SQLHelper.statusConfirmation("APPROVED", info);
+        Assertions.assertEquals("APPROVED", info);
     }
 
     @Test
@@ -53,7 +50,7 @@ public class PurchaseTest {
         formPage.setValues(cardInfo);
         formPage.checkErrorNotification();
         var info = SQLHelper.purchaseStatusCard();
-        SQLHelper.statusConfirmation("DECLINED", info);
+        Assertions.assertEquals("DECLINED", info);
     }
 
     @Test
