@@ -32,10 +32,12 @@ public class DataHelper {
     public static String generateRandomCardLessThanSixteen() {
         return String.valueOf(faker.number().numberBetween(1, 999999999999L));
     }
+
     private static String generateValidDate(String pattern) {
         int addMonths = new Random().nextInt(60);
         return LocalDate.now().plusMonths(addMonths).format(DateTimeFormatter.ofPattern(pattern));
     }
+
     public static String generateValidYear() {
         int shift = faker.number().numberBetween(0, 5);
         return LocalDate.now().plusYears(shift).format(DateTimeFormatter.ofPattern("yy"));
@@ -111,7 +113,7 @@ public class DataHelper {
     }
 
     public static CardInfo getNotValidDeclinedCard() {
-                return new CardInfo(generateRandomCard(), generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), generateRandomCVC());
+        return new CardInfo(generateRandomCard(), generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), generateRandomCVC());
     }
 
     public static CardInfo getNotValidDeclinedCardLessThanSixteen() {
@@ -123,7 +125,7 @@ public class DataHelper {
     }
 
     public static CardInfo getNotValidDeclinedCardSpecialCharacters() {
-                return new CardInfo("!@#$%^&*()_+!№;%:?*()", generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), generateRandomCVC());
+        return new CardInfo("!@#$%^&*()_+!№;%:?*()", generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), generateRandomCVC());
     }
 
     public static CardInfo getNotValidDeclinedMonthDigit() {
@@ -179,7 +181,7 @@ public class DataHelper {
     }
 
     public static CardInfo getNotValidDeclinedNameCyrillic() {
-               return new CardInfo(getApprovedCard(), generateValidDate("MM"), generateValidDate("yy"), generateRandomNameCyrillic(), generateRandomCVC());
+        return new CardInfo(getApprovedCard(), generateValidDate("MM"), generateValidDate("yy"), generateRandomNameCyrillic(), generateRandomCVC());
     }
 
     public static CardInfo getNotValidDeclinedNameSpecialCharacters() {
@@ -191,7 +193,7 @@ public class DataHelper {
     }
 
     public static CardInfo getNotValidDeclinedCVCZero() {
-         return new CardInfo(getApprovedCard(), generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), "000");
+        return new CardInfo(getApprovedCard(), generateValidDate("MM"), generateValidDate("yy"), generateRandomName(), "000");
     }
 
     public static CardInfo getNotValidDeclinedCVCLetters() {
